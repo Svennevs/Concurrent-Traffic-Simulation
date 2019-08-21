@@ -12,7 +12,7 @@
 void createTrafficObjects_Paris(std::vector<std::shared_ptr<Street>> &streets, std::vector<std::shared_ptr<Intersection>> &intersections, std::vector<std::shared_ptr<Vehicle>> &vehicles, std::string &filename, int nVehicles)
 {
     // assign filename of corresponding city map
-    filename = "../data/paris.jpg";
+    filename = "./data/paris.jpg";
 
     // init traffic objects
     int nIntersections = 9;
@@ -38,7 +38,7 @@ void createTrafficObjects_Paris(std::vector<std::shared_ptr<Street>> &streets, s
     {
         streets.push_back(std::make_shared<Street>());
         streets.at(ns)->setInIntersection(intersections.at(ns));
-        streets.at(ns)->setOutIntersection(intersections.at(8));
+        streets.at(ns)->setOutIntersection(intersections.at(nStreets));
     }
 
     // add vehicles to streets
@@ -47,6 +47,7 @@ void createTrafficObjects_Paris(std::vector<std::shared_ptr<Street>> &streets, s
         vehicles.push_back(std::make_shared<Vehicle>());
         vehicles.at(nv)->setCurrentStreet(streets.at(nv));
         vehicles.at(nv)->setCurrentDestination(intersections.at(8));
+
     }
 }
 
@@ -54,7 +55,7 @@ void createTrafficObjects_Paris(std::vector<std::shared_ptr<Street>> &streets, s
 void createTrafficObjects_NYC(std::vector<std::shared_ptr<Street>> &streets, std::vector<std::shared_ptr<Intersection>> &intersections, std::vector<std::shared_ptr<Vehicle>> &vehicles, std::string &filename, int nVehicles)
 {
     // assign filename of corresponding city map
-    filename = "../data/nyc.jpg";
+    filename = "./data/nyc.jpg";
 
     // init traffic objects
     int nIntersections = 6;
@@ -120,6 +121,7 @@ int main()
     std::string backgroundImg;
     int nVehicles = 6;
     createTrafficObjects_Paris(streets, intersections, vehicles, backgroundImg, nVehicles);
+    //createTrafficObjects_NYC(streets, intersections, vehicles, backgroundImg, nVehicles);
 
     /* PART 2 : simulate traffic objects */
 
